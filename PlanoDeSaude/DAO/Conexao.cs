@@ -11,7 +11,7 @@ namespace PlanoDeSaude.DAO
         {
             SqlConnection con = Conectar();
             comando.Connection = con;
-           //Convert.ToInt32(comando.ExecuteNonQuery());
+           //comando.ExecuteNonQuery();
             int id = Convert.ToInt32(comando.ExecuteScalar());
             con.Close();
             return id;
