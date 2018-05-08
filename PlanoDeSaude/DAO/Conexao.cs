@@ -27,7 +27,7 @@ namespace PlanoDeSaude.DAO
 
         public SqlConnection Conectar()
         {
-            string stringConexao = ConfigurationManager.ConnectionStrings["ConAtendimentoHospitalar"].ConnectionString;
+            string stringConexao = ConfigurationManager.ConnectionStrings["ConLaboratorio"].ConnectionString;
             SqlConnection conexao = new SqlConnection(stringConexao);
             conexao.Open();
             return conexao;
