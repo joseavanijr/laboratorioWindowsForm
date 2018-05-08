@@ -69,20 +69,20 @@ namespace PlanoDeSaude.DAO
                 {
                     transaction.Rollback();
                 }
-                catch { }
+                catch
+                {
+                    
+                }
                 throw new ArgumentException(e.Message);
             }
             finally
             {
-                if (conexao.State == System.Data.ConnectionState.Open)
+                if (conexao.State == ConnectionState.Open)
                     conexao.Close();
             }//fim-try
 
         }
 
-        internal int CrudRetornaId(SqlCommand comando)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

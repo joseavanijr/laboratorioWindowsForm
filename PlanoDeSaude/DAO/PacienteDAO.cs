@@ -12,7 +12,6 @@ namespace PlanoDeSaude.DAO
 {
     public class PacienteDAO  
     {
-
         public void Insert(Paciente p)
         {
 
@@ -150,6 +149,5 @@ namespace PlanoDeSaude.DAO
             dr.Close();
             return lista;
         }
-
     }
 }
