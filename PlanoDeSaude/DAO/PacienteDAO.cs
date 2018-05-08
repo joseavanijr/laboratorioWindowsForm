@@ -12,46 +12,46 @@ namespace PlanoDeSaude.DAO
 {
     public class PacienteDAO  
     {
-        public void Insert(Paciente p)
+        public void Insert(Paciente paciente)
         {
 
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "INSERT INTO Paciente (nome, dtnascimento, tipoConveniado, planoDeSaudeId) VALUES (@nome, @dtnascimento, @tipoConveniado, @planoid)";
 
-            comando.Parameters.AddWithValue("@nome", p.Nome);
-            comando.Parameters.AddWithValue("@dtnascimento", p.DataNascimento);
-            comando.Parameters.AddWithValue("@tipoConveniado", p.TipoConveniado);
-            comando.Parameters.AddWithValue("@planoid", p.ObjPlanoDeSaude.Id);
+            comando.Parameters.AddWithValue("@nome", paciente.Nome);
+            comando.Parameters.AddWithValue("@dtnascimento", paciente.DataNascimento);
+            comando.Parameters.AddWithValue("@tipoConveniado", paciente.TipoConveniado);
+            comando.Parameters.AddWithValue("@planoid", paciente.ObjPlanoDeSaude.Id);
 
             Conexao con = new Conexao();
             con.Crud(comando);
         }
-        public void Update(Paciente pac)
+        public void Update(Paciente paciente)
         {
 
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "UPDATE Paciente SET nome=@nome, tipoConveniado=@tipoConveniado, planoDeSaudeId=@planoid WHERE pacienteId=@pacienteId";
 
-            comando.Parameters.AddWithValue("@nome", pac.Nome);
-            comando.Parameters.AddWithValue("@dtnascimento", pac.DataNascimento);
-            comando.Parameters.AddWithValue("@tipoConveniado", pac.TipoConveniado);
-            comando.Parameters.AddWithValue("@planoId", pac.ObjPlanoDeSaude.Id);
-            comando.Parameters.AddWithValue("@pacienteId", pac.Id);
+            comando.Parameters.AddWithValue("@nome", paciente.Nome);
+            comando.Parameters.AddWithValue("@dtnascimento", paciente.DataNascimento);
+            comando.Parameters.AddWithValue("@tipoConveniado", paciente.TipoConveniado);
+            comando.Parameters.AddWithValue("@planoId", paciente.ObjPlanoDeSaude.Id);
+            comando.Parameters.AddWithValue("@pacienteId", paciente.Id);
 
             Conexao con = new Conexao();
             con.Crud(comando);
 
         }
-        public void Delete(Paciente pac)
+        public void Delete(Paciente paciente)
         {
 
             SqlCommand comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "DELETE  Paciente WHERE pacienteId=@pacienteId";
 
-            comando.Parameters.AddWithValue("@pacienteId", pac.Id);
+            comando.Parameters.AddWithValue("@pacienteId", paciente.Id);
 
             Conexao con = new Conexao();
             con.Crud(comando);
