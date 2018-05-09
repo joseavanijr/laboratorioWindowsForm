@@ -54,7 +54,7 @@ namespace PlanoDeSaude.DAO
                     objAtendimento.DataAtendimento = (DateTime)dr["dataAtendimento"];
                     objAtendimento.Status = (string)dr["status"];
                     //objAtendimento.ValorAPagar = (decimal)dr["valorAPagar"];
-                    objAtendimento.ObjPaciente = new PacienteDAO().SelectForId((int)dr["pacienteID"]);
+                    objAtendimento.ObjPaciente = new PacienteDAO().SelectById((int)dr["pacienteID"]);
                     objAtendimento.ListaExamesDoAtendimento = new ExamesDoAtendimentoDAO().BuscarExamesDoAtendimento(objAtendimento);
                     listaAtendimento.Add(objAtendimento);
                 }//fim while
@@ -90,7 +90,7 @@ namespace PlanoDeSaude.DAO
                     objAtendimento.DataAtendimento = (DateTime)dr["dataAtendimento"];
                     objAtendimento.Status = (string)dr["status"];
                     //objAtendimento.ValorAPagar = (decimal)dr["valorAPagar"];
-                    objAtendimento.ObjPaciente = new PacienteDAO().SelectForId((int)dr["pacienteID"]);
+                    objAtendimento.ObjPaciente = new PacienteDAO().SelectById((int)dr["pacienteID"]);
                     objAtendimento.ListaExamesDoAtendimento = new ExamesDoAtendimentoDAO().BuscarExamesDoAtendimento(objAtendimento);
                     listaAtendimento.Add(objAtendimento);
                 }//fim while
@@ -122,7 +122,7 @@ namespace PlanoDeSaude.DAO
                 objAtendimento.DataAtendimento = (DateTime)dr["dataAtendimento"];
                 objAtendimento.Status = (string)dr["status"];
                 //objAtendimento.ValorAPagar = (decimal)dr["valorAPagar"];
-                objAtendimento.ObjPaciente = new PacienteDAO().SelectForId((int)dr["pacienteID"]);
+                objAtendimento.ObjPaciente = new PacienteDAO().SelectById((int)dr["pacienteID"]);
                 objAtendimento.ListaExamesDoAtendimento = new ExamesDoAtendimentoDAO().BuscarExamesDoAtendimento(objAtendimento);
             }
             else

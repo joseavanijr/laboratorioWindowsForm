@@ -44,6 +44,7 @@ namespace PlanoDeSaude.Model
             get { return nome; }
             set { nome = value; }
         }
+
         #endregion
 
         #region MÉTODOS
@@ -67,7 +68,7 @@ namespace PlanoDeSaude.Model
             dt.Columns.Add("Data de Nascimento", typeof(DateTime));
             dt.Columns.Add("Plano de Saúde", typeof(string));
 
-            foreach (var item in new PacienteDAO().SelectForName(nome))
+            foreach (var item in new PacienteDAO().SelectByName(nome))
             {
                 dt.Rows.Add(item.id, item.Nome, item.dtNascimento, item.ObjPlanoDeSaude.Nome);
             }
@@ -75,7 +76,7 @@ namespace PlanoDeSaude.Model
         }
         public Paciente Buscar(int id)
         {
-            return new PacienteDAO().SelectForId(id);
+            return new PacienteDAO().SelectById(id);
         }
 
         public DataTable Buscar()

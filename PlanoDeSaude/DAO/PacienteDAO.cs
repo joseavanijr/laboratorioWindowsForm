@@ -57,7 +57,7 @@ namespace PlanoDeSaude.DAO
             con.Crud(comando);
 
         }
-        public Paciente SelectForId(int id)
+        public Paciente SelectById(int id)
         {
             Paciente p = new Paciente();
 
@@ -85,7 +85,7 @@ namespace PlanoDeSaude.DAO
             dr.Close();
             return p;
         }
-        public IList<Paciente> SelectForName(string nome)
+        public IList<Paciente> SelectByName(string nome)
         {
            
             IList<Paciente> lista = new List<Paciente>();
