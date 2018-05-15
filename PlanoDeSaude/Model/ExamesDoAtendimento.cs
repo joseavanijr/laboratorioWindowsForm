@@ -9,11 +9,12 @@ namespace PlanoDeSaude.Model
         private DateTime dataExame;
         private int id;
         private string status;
-        private Exame objExame = new Exame();
+        private Exame objExame;
         private Atendimento objAtendimento;
 
         public ExamesDoAtendimento(Atendimento atendimento)
         {
+            objExame = new Exame();
             objAtendimento = atendimento;
         }
         public DateTime DataExame
