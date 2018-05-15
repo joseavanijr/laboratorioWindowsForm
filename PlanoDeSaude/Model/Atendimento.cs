@@ -51,11 +51,6 @@ namespace PlanoDeSaude.Model
             set { listaExamesDoAtendimento = value; }
         }
 
-
-        public Atendimento()
-        {
-            objPaciente = new Paciente();
-        }
         public void Save()
         {
 
