@@ -15,7 +15,7 @@ namespace PlanoDeSaude.Model
         private string status;
         private decimal valorAPagar;
         private IList<ExamesDoAtendimento> listaExamesDoAtendimento = new List<ExamesDoAtendimento>();
-        private Paciente objPaciente;
+        private Paciente objPaciente = new Paciente();
 
         public DateTime DataAtendimento
         {
