@@ -21,8 +21,8 @@ namespace PlanoDeSaude.DAO
         {
             SqlConnection con = Conectar();
             Comando.Connection = con;
-            SqlDataReader Dr = Comando.ExecuteReader(CommandBehavior.CloseConnection);
-            return Dr;
+            SqlDataReader dr = Comando.ExecuteReader(CommandBehavior.CloseConnection);
+            return dr;
         }
 
         public SqlConnection Conectar()
