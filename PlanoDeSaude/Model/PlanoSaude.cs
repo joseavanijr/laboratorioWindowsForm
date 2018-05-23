@@ -26,5 +26,15 @@ namespace PlanoDeSaude.Model
         {
             return new PlanoSaudeDAO().Selecionar();
         }
+
+        public void Save(PlanoSaude plano)
+        {
+           new PlanoSaudeDAO().Insert(this);
+        }
+
+        public PlanoSaude Selecionar(int id)
+        {
+            return new PlanoSaudeDAO().Selecionar(id);
+        }
     }
 }

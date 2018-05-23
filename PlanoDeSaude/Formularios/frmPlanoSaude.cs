@@ -23,27 +23,19 @@ namespace PlanoDeSaude.Formularios
 
         private void Salvar()
         {
-            // 1) Cria o objeto MODEL
-            PlanoSaude plano = new PlanoSaude();
 
-            // 2) Preenche o objeto da MODEL com os dados do formulário
-            plano.Nome = txtNome.Text;
-
-            // 3) Cria o objeto da DAO para levar o objeto da MODEL para o banco
-            PlanoSaudeDAO planoDAO = new PlanoSaudeDAO();
-
-            // 4) entregar o objeto da MODEL para o objeto da DAO
-            planoDAO.Insert(plano);
         }
+
         private void Alterar()
         {
             PlanoSaude plano = new PlanoSaude();
-            plano.Id =Convert.ToInt32(lblId.Text);
+            plano.Id = Convert.ToInt32(lblId.Text);
             plano.Nome = txtNome.Text;
 
             PlanoSaudeDAO pDAO = new PlanoSaudeDAO();
             pDAO.Update(plano);
         }
+
         private void Excluir()
         {
             PlanoSaude plano = new PlanoSaude();
@@ -52,7 +44,40 @@ namespace PlanoDeSaude.Formularios
             PlanoSaudeDAO pDAO = new PlanoSaudeDAO();
             pDAO.Delete(plano);
         }
+
         private void CarregarGrid()
+        {
+            
+        }
+
+        private void PreencheFormulario()
+        {
+            int id = Convert.ToInt32(dgPlanos.CurrentRow.Cells["Id"].Value);
+
+            PlanoSaude plano = new PlanoSaude().Selecionar(id);
+
+            txtNome.Text = plano.Nome;
+            lblId.Text = plano.Id.ToString();
+        }
+
+        #endregion
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PlanoSaude plano = new PlanoSaude();
+                plano.Nome = txtNome.Text;
+                plano.Save(plano);
+                MessageBox.Show("Gravado com Sucesso!");
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }           
+        }
+               
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             // Cria o objeto DAO para realizar a busca no banco
             PlanoSaudeDAO pDAO = new PlanoSaudeDAO();
@@ -65,30 +90,6 @@ namespace PlanoDeSaude.Formularios
 
             // Coloca o resultado no DataGridView
             dgPlanos.DataSource = listaDePlano;
-        }
-        private void PreencheFormulario()
-        {
-            int id =Convert.ToInt32(dgPlanos.CurrentRow.Cells["Id"].Value);
-
-            PlanoSaudeDAO pDAO = new PlanoSaudeDAO();
-            PlanoSaude plano = new PlanoSaude();
-
-            plano = pDAO.Selecionar(id);
-
-            txtNome.Text = plano.Nome;
-            lblId.Text = plano.Id.ToString();
-        }
-        #endregion
-
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            //Chamar o método salvar
-            Salvar();
-        }
-               
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            CarregarGrid();
         }
 
         private void dgPlanos_CellClick(object sender, DataGridViewCellEventArgs e)
