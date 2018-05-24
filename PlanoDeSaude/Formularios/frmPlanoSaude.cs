@@ -21,10 +21,7 @@ namespace PlanoDeSaude.Formularios
 
         #region METODOS
 
-        private void Salvar()
-        {
 
-        }
 
         private void Alterar()
         {
@@ -45,19 +42,10 @@ namespace PlanoDeSaude.Formularios
             pDAO.Delete(plano);
         }
 
-        private void CarregarGrid()
-        {
-            
-        }
 
         private void PreencheFormulario()
         {
-            int id = Convert.ToInt32(dgPlanos.CurrentRow.Cells["Id"].Value);
 
-            PlanoSaude plano = new PlanoSaude().Selecionar(id);
-
-            txtNome.Text = plano.Nome;
-            lblId.Text = plano.Id.ToString();
         }
 
         #endregion
@@ -68,15 +56,15 @@ namespace PlanoDeSaude.Formularios
             {
                 PlanoSaude plano = new PlanoSaude();
                 plano.Nome = txtNome.Text;
-                plano.Save(plano);
+                plano.Save();
                 MessageBox.Show("Gravado com Sucesso!");
             }
             catch (Exception erro)
             {
                 MessageBox.Show(erro.Message);
-            }           
+            }
         }
-               
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             // Cria o objeto DAO para realizar a busca no banco
@@ -94,12 +82,35 @@ namespace PlanoDeSaude.Formularios
 
         private void dgPlanos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            PreencheFormulario();
+            try
+            {
+                int id = Convert.ToInt32(dgPlanos.CurrentRow.Cells["Id"].Value);
+
+                PlanoSaude plano = new PlanoSaude().Selecionar(id);
+
+                txtNome.Text = plano.Nome;
+                lblId.Text = plano.Id.ToString();
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            Alterar();
+            try
+            {
+                PlanoSaude plano = new PlanoSaude();
+                plano.Nome = txtNome.Text;
+                plano.Id = Convert.ToInt32(lblId.Text);
+                plano.Save();
+                MessageBox.Show("Alterado com sucesso");
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
