@@ -40,6 +40,12 @@ namespace PlanoDeSaude.Model
             }            
         }
 
+        public void Apagar()
+        {
+            PlanoSaudeDAO dao = new PlanoSaudeDAO();
+            dao.Delete(this);
+        }
+
         public PlanoSaude Selecionar(int id)
         {
             return new PlanoSaudeDAO().Selecionar(id);

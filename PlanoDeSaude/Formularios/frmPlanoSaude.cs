@@ -19,37 +19,6 @@ namespace PlanoDeSaude.Formularios
             InitializeComponent();
         }
 
-        #region METODOS
-
-
-
-        private void Alterar()
-        {
-            PlanoSaude plano = new PlanoSaude();
-            plano.Id = Convert.ToInt32(lblId.Text);
-            plano.Nome = txtNome.Text;
-
-            PlanoSaudeDAO pDAO = new PlanoSaudeDAO();
-            pDAO.Update(plano);
-        }
-
-        private void Excluir()
-        {
-            PlanoSaude plano = new PlanoSaude();
-            plano.Id = Convert.ToInt32(lblId.Text);
-
-            PlanoSaudeDAO pDAO = new PlanoSaudeDAO();
-            pDAO.Delete(plano);
-        }
-
-
-        private void PreencheFormulario()
-        {
-
-        }
-
-        #endregion
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
@@ -115,7 +84,18 @@ namespace PlanoDeSaude.Formularios
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            Excluir();
+            try
+            {
+                PlanoSaude plano = new PlanoSaude();
+                plano.Id = Convert.ToInt32(lblId.Text);
+                plano.Apagar();
+                MessageBox.Show("Apagado com sucesso!");
+
+            }
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro.Message);
+            }
         }
     }
 }
