@@ -24,7 +24,22 @@ namespace PlanoDeSaude.Formularios
         {
             try
             {
-                Salvar();
+                Paciente p = new Paciente();
+
+                if (rbTitular.Checked)
+                {
+                    p.TipoConveniado = 1;
+                }
+                else if (rbDependente.Checked)
+                {
+                    p.TipoConveniado = 2;
+                }
+
+                p.Nome = txtNome.Text;
+                p.DataNascimento = Convert.ToDateTime(mktxtDataNascimento.Text);
+                p.ObjPlanoDeSaude.Id = Convert.ToInt32(cbxPlanoSaude.SelectedValue);
+
+                p.Save();
                 LimparDados();
                 MessageBox.Show("Opreação realizada com sucesso");
             }
@@ -38,7 +53,7 @@ namespace PlanoDeSaude.Formularios
         {
             try
             {
-                Buscar();
+                dgvPacientes.DataSource = new Paciente().Buscar(txtBuscaNome.Text);
             }
             catch (Exception erroException)
             {
@@ -80,28 +95,10 @@ namespace PlanoDeSaude.Formularios
             cbxPlanoSaude.ValueMember = "Id";
             cbxPlanoSaude.DisplayMember = "Nome";
         }
-        private void Salvar()
-        {
-            Paciente p = new Paciente();
 
-            if (rbTitular.Checked)
-            {
-                p.TipoConveniado = 1;
-            }
-            else if (rbDependente.Checked)
-            {
-                p.TipoConveniado = 2;
-            }
-
-            p.Nome = txtNome.Text;
-            p.DataNascimento = Convert.ToDateTime(mktxtDataNascimento.Text);
-            p.ObjPlanoDeSaude.Id = Convert.ToInt32(cbxPlanoSaude.SelectedValue);
-
-            p.Save();
-        }
         private void Buscar()
         {
-            dgvPacientes.DataSource = new Paciente().Buscar(txtBuscaNome.Text);
+            
 
         }
         private void PreencheFormulario(Paciente p)
