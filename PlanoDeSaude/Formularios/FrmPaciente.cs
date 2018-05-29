@@ -104,6 +104,10 @@ namespace PlanoDeSaude.Formularios
             }
 
         }
+        private void btnNovo_Click(object sender, EventArgs e)
+        {
+            LimparDados();
+        }
 
         #region MÉTODOS DE APOIO
         public void PreencherComboBox()
@@ -138,8 +142,8 @@ namespace PlanoDeSaude.Formularios
             rbTitular.Checked = false;
             lblId.Text = string.Empty;
         }
-
         #endregion
 
+       
     }
 }
