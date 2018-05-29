@@ -48,6 +48,7 @@
             this.txtBuscaNome = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -165,6 +166,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnNovo);
             this.groupBox2.Controls.Add(this.btnExcluir);
             this.groupBox2.Controls.Add(this.btnAlterar);
             this.groupBox2.Controls.Add(this.btnSalvar);
@@ -177,30 +179,30 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(239, 39);
+            this.btnExcluir.Location = new System.Drawing.Point(196, 42);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.Size = new System.Drawing.Size(74, 23);
             this.btnExcluir.TabIndex = 3;
-            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.Text = "&Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(135, 39);
+            this.btnAlterar.Location = new System.Drawing.Point(104, 42);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterar.Size = new System.Drawing.Size(74, 23);
             this.btnAlterar.TabIndex = 2;
-            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.Text = "&Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(28, 39);
+            this.btnSalvar.Location = new System.Drawing.Point(17, 42);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.Size = new System.Drawing.Size(74, 23);
             this.btnSalvar.TabIndex = 0;
-            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.Text = "&Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
@@ -255,6 +257,15 @@
             this.dgvPacientes.TabIndex = 0;
             this.dgvPacientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPacientes_CellClick);
             // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(285, 42);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(74, 23);
+            this.btnNovo.TabIndex = 4;
+            this.btnNovo.Text = "&Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            // 
             // FrmPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,5 +308,6 @@
         private System.Windows.Forms.TextBox txtBuscaNome;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Button btnNovo;
     }
 }

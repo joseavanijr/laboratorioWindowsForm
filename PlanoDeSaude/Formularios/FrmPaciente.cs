@@ -78,8 +78,25 @@ namespace PlanoDeSaude.Formularios
         {
             try
             {
-                Alterar();
+                Paciente p = new Paciente();
+                p.Id = Convert.ToInt32(lblId.Text);
+
+                if (rbTitular.Checked)
+                {
+                    p.TipoConveniado = 1;
+                }
+                else if (rbDependente.Checked)
+                {
+                    p.TipoConveniado = 2;
+                }
+
+                p.Nome = txtNome.Text;
+                p.DataNascimento = Convert.ToDateTime(mktxtDataNascimento.Text);
+                p.ObjPlanoDeSaude.Id = Convert.ToInt32(cbxPlanoSaude.SelectedValue);
+
+                p.Save();
                 LimparDados();
+                MessageBox.Show("Opreação realizada com sucesso");
             }
             catch (Exception erroException)
             {
@@ -88,18 +105,12 @@ namespace PlanoDeSaude.Formularios
 
         }
 
-        #region MÉTODOS
+        #region MÉTODOS DE APOIO
         public void PreencherComboBox()
         {
             cbxPlanoSaude.DataSource = new PlanoSaude().FindAll();
             cbxPlanoSaude.ValueMember = "Id";
             cbxPlanoSaude.DisplayMember = "Nome";
-        }
-
-        private void Buscar()
-        {
-            
-
         }
         private void PreencheFormulario(Paciente p)
         {
@@ -118,29 +129,6 @@ namespace PlanoDeSaude.Formularios
             }
 
         }
-        private void Alterar()
-        {
-            Paciente p = new Paciente();
-            p.Id = Convert.ToInt32(lblId.Text);
-
-            if (rbTitular.Checked)
-            {
-                p.TipoConveniado = 1;
-            }
-            else if (rbDependente.Checked)
-            {
-                p.TipoConveniado = 2;
-            }
-
-            p.Nome = txtNome.Text;
-            p.DataNascimento = Convert.ToDateTime(mktxtDataNascimento.Text);
-            p.ObjPlanoDeSaude.Id = Convert.ToInt32(cbxPlanoSaude.SelectedValue);
-
-            p.Save();
-
-            MessageBox.Show("Opreação realizada com sucesso! é nóix");
-
-        }
         public void LimparDados()
         {
             txtNome.Text = string.Empty;
@@ -151,11 +139,7 @@ namespace PlanoDeSaude.Formularios
             lblId.Text = string.Empty;
         }
 
-
         #endregion
-
-
-
 
     }
 }
