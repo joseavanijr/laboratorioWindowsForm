@@ -25,7 +25,6 @@ namespace PlanoDeSaude.Formularios
             try
             {
                 Paciente p = new Paciente();
-
                 if (rbTitular.Checked)
                 {
                     p.TipoConveniado = 1;
@@ -34,14 +33,13 @@ namespace PlanoDeSaude.Formularios
                 {
                     p.TipoConveniado = 2;
                 }
-
                 p.Nome = txtNome.Text;
                 p.DataNascimento = Convert.ToDateTime(mktxtDataNascimento.Text);
                 p.ObjPlanoDeSaude.Id = Convert.ToInt32(cbxPlanoSaude.SelectedValue);
 
                 p.Save();
                 LimparDados();
-                MessageBox.Show("Opreação realizada com sucesso");
+                MessageBox.Show("Operação realizada com sucesso");
             }
             catch (Exception erroException)
             {
