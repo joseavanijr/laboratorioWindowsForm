@@ -34,12 +34,12 @@
             this.rbTitular = new System.Windows.Forms.RadioButton();
             this.cbxPlanoSaude = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.mktxtDataNascimento = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@
             this.txtBuscaNome = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvPacientes = new System.Windows.Forms.DataGridView();
-            this.btnNovo = new System.Windows.Forms.Button();
+            this.dtpNascimento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -57,12 +57,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dtpNascimento);
             this.groupBox1.Controls.Add(this.lblId);
             this.groupBox1.Controls.Add(this.rbDependente);
             this.groupBox1.Controls.Add(this.rbTitular);
             this.groupBox1.Controls.Add(this.cbxPlanoSaude);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.mktxtDataNascimento);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtNome);
@@ -121,15 +121,6 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Plano de Saude";
             // 
-            // mktxtDataNascimento
-            // 
-            this.mktxtDataNascimento.Location = new System.Drawing.Point(105, 101);
-            this.mktxtDataNascimento.Mask = "00/00/0000";
-            this.mktxtDataNascimento.Name = "mktxtDataNascimento";
-            this.mktxtDataNascimento.Size = new System.Drawing.Size(100, 20);
-            this.mktxtDataNascimento.TabIndex = 7;
-            this.mktxtDataNascimento.ValidatingType = typeof(System.DateTime);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -176,6 +167,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ações";
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(285, 42);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(74, 23);
+            this.btnNovo.TabIndex = 4;
+            this.btnNovo.Text = "&Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnExcluir
             // 
@@ -257,15 +258,13 @@
             this.dgvPacientes.TabIndex = 0;
             this.dgvPacientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPacientes_CellClick);
             // 
-            // btnNovo
+            // dtpNascimento
             // 
-            this.btnNovo.Location = new System.Drawing.Point(285, 42);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(74, 23);
-            this.btnNovo.TabIndex = 4;
-            this.btnNovo.Text = "&Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.dtpNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNascimento.Location = new System.Drawing.Point(95, 97);
+            this.dtpNascimento.Name = "dtpNascimento";
+            this.dtpNascimento.Size = new System.Drawing.Size(121, 20);
+            this.dtpNascimento.TabIndex = 14;
             // 
             // FrmPaciente
             // 
@@ -291,7 +290,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox mktxtDataNascimento;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNome;
@@ -310,5 +308,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.DateTimePicker dtpNascimento;
     }
 }

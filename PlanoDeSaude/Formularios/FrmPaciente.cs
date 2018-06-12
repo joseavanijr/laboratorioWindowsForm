@@ -19,7 +19,6 @@ namespace PlanoDeSaude.Formularios
             InitializeComponent();
             PreencherComboBox();
         }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
@@ -34,7 +33,7 @@ namespace PlanoDeSaude.Formularios
                     p.TipoConveniado = 2;
                 }
                 p.Nome = txtNome.Text;
-                p.DataNascimento = Convert.ToDateTime(mktxtDataNascimento.Text);
+                p.DataNascimento = dtpNascimento.Value;
                 p.ObjPlanoDeSaude.Id = Convert.ToInt32(cbxPlanoSaude.SelectedValue);
 
                 p.Save();
@@ -89,7 +88,7 @@ namespace PlanoDeSaude.Formularios
                 }
 
                 p.Nome = txtNome.Text;
-                p.DataNascimento = Convert.ToDateTime(mktxtDataNascimento.Text);
+                p.DataNascimento = dtpNascimento.Value;
                 p.ObjPlanoDeSaude.Id = Convert.ToInt32(cbxPlanoSaude.SelectedValue);
 
                 p.Save();
@@ -118,7 +117,7 @@ namespace PlanoDeSaude.Formularios
         {
             lblId.Text = p.Id.ToString();
             txtNome.Text = p.Nome;
-            mktxtDataNascimento.Text = p.DataNascimento.ToString();
+            dtpNascimento.Value = p.DataNascimento;
             cbxPlanoSaude.SelectedValue = p.ObjPlanoDeSaude.Id;
 
             if (p.TipoConveniado == 1)
@@ -134,14 +133,12 @@ namespace PlanoDeSaude.Formularios
         public void LimparDados()
         {
             txtNome.Text = string.Empty;
-            mktxtDataNascimento.Text = string.Empty;
+            dtpNascimento.Value = DateTime.Now;
             cbxPlanoSaude.SelectedItem = null;
             rbDependente.Checked = false;
             rbTitular.Checked = false;
             lblId.Text = string.Empty;
         }
-        #endregion
-
-       
+        #endregion       
     }
 }
