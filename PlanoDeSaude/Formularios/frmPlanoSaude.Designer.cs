@@ -31,6 +31,7 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblId = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.txtBusca = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.dgPlanos = new System.Windows.Forms.DataGridView();
-            this.lblId = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -73,6 +73,14 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados";
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(7, 16);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 13);
+            this.lblId.TabIndex = 3;
             // 
             // groupBox2
             // 
@@ -153,14 +161,6 @@
             this.dgPlanos.Size = new System.Drawing.Size(184, 151);
             this.dgPlanos.TabIndex = 0;
             this.dgPlanos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPlanos_CellClick);
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(7, 16);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(0, 13);
-            this.lblId.TabIndex = 3;
             // 
             // frmPlanoSaude
             // 

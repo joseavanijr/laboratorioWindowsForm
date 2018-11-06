@@ -49,14 +49,13 @@ namespace PlanoDeSaude.Formularios
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
-            {
-                dgvPacientes.DataSource = new Paciente().Buscar(txtBuscaNome.Text);
+            {              
+                dgvPacientes.DataSource = new Paciente().Buscar();
             }
             catch (Exception erroException)
             {
                 MessageBox.Show(erroException.Message);
             }
-
         }
         private void dgvPacientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {

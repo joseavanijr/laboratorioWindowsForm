@@ -30,14 +30,14 @@ namespace PlanoDeSaude.Model
         public void Save()
         {
             PlanoSaudeDAO dao = new PlanoSaudeDAO();
-            if (id==0)
+            if (id == 0)
             {
-              dao.Insert(this);  
+                dao.Insert(this);
             }
             else
             {
                 dao.Update(this);
-            }            
+            }
         }
 
         public void Apagar()
