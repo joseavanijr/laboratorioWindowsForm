@@ -28,7 +28,7 @@ namespace PlanoDeSaude.Formularios
 
         private void CarrearPacientes()
         {
-            gvPacienteDoAtendimento.DataSource = new PacienteDAO().SelectAll();
+            gvPacienteDoAtendimento.DataSource = new Paciente().FormataListaPacientes(new PacienteDAO().SelectAll());
         }
     }
 }
