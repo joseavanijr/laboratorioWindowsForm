@@ -15,6 +15,7 @@ namespace PlanoDeSaude.Formularios
     public partial class frmBuscaExamePedido : Form
     {
         private frmAtendimento frmAtendimento = null;
+
         public frmBuscaExamePedido(frmAtendimento frmAtendemcintoPrincipal)
         {
             InitializeComponent();
@@ -26,15 +27,10 @@ namespace PlanoDeSaude.Formularios
         {
             int id = Convert.ToInt32(gvExames.CurrentRow.Cells["Id"].Value);
 
-            var exame = new ExameDAO().SelecionaPorID(id);
-
-            ExamesDoAtendimento item = new ExamesDoAtendimento(frmAtendimento.ObjAtendimento);
-            item.DataExame = DateTime.Now;
-            item.ObjExame = exame;
-            item.Status = "Exame Por fazer"; 
-
-            frmAtendimento.ObjAtendimento.ListaExamesDoAtendimento.Add(item);
+            Exame exame = new ExameDAO().SelecionaPorID(id);
+            frmAtendimento.ObjAtendimento.AddItem(exame, "Exame por Fazer", DateTime.Now);
             frmAtendimento.CarregaGridExamesDoAtendimento();
+
             this.Close();
         }
 

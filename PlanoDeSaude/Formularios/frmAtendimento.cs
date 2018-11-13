@@ -48,7 +48,7 @@ namespace PlanoDeSaude.Formularios
             try
             {
                 ObjAtendimento.DataAtendimento = Convert.ToDateTime(dpDataAtendimento.Text);
-                ObjAtendimento.Status = "Atendimento Agendando";
+                ObjAtendimento.Status = "Agendando";
                 ObjAtendimento.Save();
 
                 MessageBox.Show("Atendimento salvo com sucesso!");
@@ -70,8 +70,7 @@ namespace PlanoDeSaude.Formularios
         private void btnRemover_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(gvListaDeExames.CurrentRow.Index);
-           
-            ObjAtendimento.ListaExamesDoAtendimento.RemoveAt(id);
+            ObjAtendimento.RemoveItem(id);
             CarregaGridExamesDoAtendimento();
         }
     }

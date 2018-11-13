@@ -45,6 +45,21 @@ namespace PlanoDeSaude.Model
             get { return objPaciente; }
             set { objPaciente = value; }
         }
+
+        public void AddItem(Exame exame, string status, DateTime data)
+        {
+            ExamesDoAtendimento item = new ExamesDoAtendimento(this);
+            item.DataExame = data;
+            item.ObjExame = exame;
+            item.Status = status;
+            ListaExamesDoAtendimento.Add(item);
+        }
+
+        public void RemoveItem(int id)
+        {
+            ListaExamesDoAtendimento.RemoveAt(id);
+        }
+
         public IList<ExamesDoAtendimento> ListaExamesDoAtendimento
         {
             get { return listaExamesDoAtendimento; }
@@ -72,6 +87,9 @@ namespace PlanoDeSaude.Model
             }
 
         }
+
+  
+
         public void Remove()
         {
             using (TransactionScope scopo = new TransactionScope())
