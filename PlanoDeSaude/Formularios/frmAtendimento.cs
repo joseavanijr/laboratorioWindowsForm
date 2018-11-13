@@ -69,8 +69,8 @@ namespace PlanoDeSaude.Formularios
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(gvListaDeExames.CurrentRow.Index);
-            ObjAtendimento.RemoveItem(id);
+            int index = Convert.ToInt32(gvListaDeExames.CurrentRow.Index);
+            ObjAtendimento.RemoveItem(index);
             CarregaGridExamesDoAtendimento();
         }
     }

@@ -55,9 +55,9 @@ namespace PlanoDeSaude.Model
             ListaExamesDoAtendimento.Add(item);
         }
 
-        public void RemoveItem(int id)
+        public void RemoveItem(int index)
         {
-            ListaExamesDoAtendimento.RemoveAt(id);
+            ListaExamesDoAtendimento.RemoveAt(index);
         }
 
         public IList<ExamesDoAtendimento> ListaExamesDoAtendimento
