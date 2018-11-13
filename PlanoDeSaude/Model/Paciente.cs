@@ -89,6 +89,21 @@ namespace PlanoDeSaude.Model
             }
             return dt;
         }
+        
+        public DataTable FormataListaPacientes(IList<Paciente> pacientes)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Id", typeof(int));
+            dt.Columns.Add("Nome", typeof(string));
+            dt.Columns.Add("Data de Nascimento", typeof(DateTime));
+            dt.Columns.Add("Plano de Saúde", typeof(string));
+
+            foreach (var item in pacientes)
+            {
+                dt.Rows.Add(item.id, item.Nome, item.dtNascimento, item.ObjPlanoDeSaude.Nome);
+            }
+            return dt;
+        }
         #endregion
     }
 }
