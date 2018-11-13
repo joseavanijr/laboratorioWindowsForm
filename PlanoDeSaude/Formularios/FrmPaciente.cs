@@ -49,8 +49,10 @@ namespace PlanoDeSaude.Formularios
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
-            {              
-                dgvPacientes.DataSource = new Paciente().Buscar();
+            {
+                Paciente paciente = new Paciente();
+                string textoBusca = txtBuscaNome.Text;
+                dgvPacientes.DataSource = paciente.FormataListaPacientes(paciente.Buscar(textoBusca));
             }
             catch (Exception erroException)
             {
