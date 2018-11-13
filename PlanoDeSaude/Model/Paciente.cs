@@ -57,40 +57,18 @@ namespace PlanoDeSaude.Model
                 pDAO.Update(this);
             }
         }
-        public DataTable Buscar(string nome)
+        public IList<Paciente> Buscar()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Id", typeof(int));
-            dt.Columns.Add("Nome", typeof(string));
-            dt.Columns.Add("Data de Nascimento", typeof(DateTime));
-            dt.Columns.Add("Plano de Saúde", typeof(string));
-
-            foreach (var item in new PacienteDAO().SelectByName(nome))
-            {
-                dt.Rows.Add(item.id, item.Nome, item.dtNascimento, item.ObjPlanoDeSaude.Nome);
-            }
-            return dt;
+            return new PacienteDAO().SelectAll();
+        }
+        public IList<Paciente> Buscar(string nome)
+        {
+            return new PacienteDAO().SelectByName(nome);
         }
         public Paciente Buscar(int id)
         {
             return new PacienteDAO().SelectById(id);
-        }
-
-        public DataTable Buscar()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Id", typeof(int));
-            dt.Columns.Add("Nome", typeof(string));
-            dt.Columns.Add("Data de Nascimento", typeof(DateTime));
-            dt.Columns.Add("Plano de Saúde", typeof(string));
-
-            foreach (var item in new PacienteDAO().SelectAll())
-            {
-                dt.Rows.Add(item.id, item.Nome, item.dtNascimento, item.ObjPlanoDeSaude.Nome);
-            }
-            return dt;
-        }
-        
+        }      
         public DataTable FormataListaPacientes(IList<Paciente> pacientes)
         {
             DataTable dt = new DataTable();
