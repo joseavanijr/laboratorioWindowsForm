@@ -75,8 +75,8 @@ namespace PlanoDeSaude.DAO
             var comando = new SqlCommand();
             comando.CommandType = CommandType.Text;
             comando.CommandText = "SELECT * FROM Atendimento WHERE dataAtendimento BETWEEN  @dataInicio and @dataFim";
-            comando.Parameters.AddWithValue("@dataInicio", inicio);
-            comando.Parameters.AddWithValue("@dataFim", fim);
+            comando.Parameters.AddWithValue("@dataInicio", inicio.Date);
+            comando.Parameters.AddWithValue("@dataFim", fim.Date);
 
             Conexao con = new Conexao();
             SqlDataReader dr = con.Selecionar(comando);

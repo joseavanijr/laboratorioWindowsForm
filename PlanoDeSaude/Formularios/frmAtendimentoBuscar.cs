@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using PlanoDeSaude.DAO;
 using PlanoDeSaude.Model;
 
 namespace PlanoDeSaude.Formularios
 {
     public partial class frmAtendimentoBuscar : Form
     {
-        public Atendimento ObjAtendimento = new Atendimento();
+
+        private Atendimento ObjAtendimento = new Atendimento();
         public frmAtendimentoBuscar()
         {
             InitializeComponent();
@@ -19,7 +21,7 @@ namespace PlanoDeSaude.Formularios
 
         public void CarregaGridExamesDoAtendimento()
         {
-            gvListaDeExames.DataSource = ObjAtendimento.FormatarParaExibir();
+            gvListaDeExames.DataSource = ObjAtendimento.FormatarParaExibir(new AtendimentoDAO().BuscarTodos());
         }
 
        #endregion
@@ -36,14 +38,14 @@ namespace PlanoDeSaude.Formularios
         {
             Atendimento a = new Atendimento();
 
-            gvListaDeExames.DataSource = a.Buscar();
+            gvListaDeExames.DataSource = a.FormatarParaExibir(a.Buscar());
         }
 
         private void btnBuscarAtendimento_Click(object sender, EventArgs e)
         {
             Atendimento a = new Atendimento();
 
-            gvListaDeExames.DataSource = a.Buscar(Convert.ToDateTime(dtpDataInicio.Value), Convert.ToDateTime(dtpDataFim.Value));
+            gvListaDeExames.DataSource = a.FormatarParaExibir(a.Buscar(Convert.ToDateTime(dtpDataInicio.Value), Convert.ToDateTime(dtpDataFim.Value)));
         }
 
         private void gvListaDeExames_CellClick(object sender, DataGridViewCellEventArgs e)

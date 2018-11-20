@@ -52,6 +52,7 @@ namespace PlanoDeSaude.Model
             item.DataExame = data;
             item.ObjExame = exame;
             item.Status = status;
+
             ListaExamesDoAtendimento.Add(item);
         }
 
@@ -117,7 +118,7 @@ namespace PlanoDeSaude.Model
         {
             return new AtendimentoDAO().BuscarPorID(id);
         }
-        public DataTable FormatarParaExibir()
+        public DataTable FormatarItensParaExibir(IList<ExamesDoAtendimento> listaExamesDoAtendimento)
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("Código do Exame", typeof(int));
@@ -125,10 +126,10 @@ namespace PlanoDeSaude.Model
             dt.Columns.Add("Data", typeof(DateTime));
             dt.Columns.Add("Valor do Exame", typeof(decimal));
 
-            if (this.ListaExamesDoAtendimento != null)
+            if (listaExamesDoAtendimento != null)
             {
                 DataRow dr;
-                foreach (var item in this.ListaExamesDoAtendimento)
+                foreach (var item in listaExamesDoAtendimento)
                 {
                     //  dt.Rows.Add(item.ObjExame.Id, item.ObjExame.Descricao, item.ObjExame.Valor, item.ObjAtendimento.ObjPaciente.Nome, item.Status);
                     dr = dt.NewRow();
@@ -145,6 +146,30 @@ namespace PlanoDeSaude.Model
             }
             return dt;
         }
+
+        public DataTable FormatarParaExibir(IList<Atendimento> listaAtendimento)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Código do Atendimento", typeof(int));
+            dt.Columns.Add("Data do Atendimento", typeof(DateTime));
+            dt.Columns.Add("Valor à Pagar", typeof(decimal));
+            dt.Columns.Add("Status", typeof(string));
+
+            if (listaAtendimento != null)
+            {
+                DataRow dr;
+                foreach (var item in listaAtendimento)
+                {
+                    dt.Rows.Add(item.Id, item.DataAtendimento, item.ValorAPagar, item.Status);
+                }
+            }
+            else
+            {
+                dt = null;
+            }
+            return dt;
+        }
+
 
         public void Validar()
         {
