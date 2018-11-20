@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Data;
 using PlanoDeSaude.DAO;
 
 namespace PlanoDeSaude.Model
@@ -54,8 +56,8 @@ namespace PlanoDeSaude.Model
          public static DataTable FormatarLista(IList<ExamesDoAtendimento> ListaExamesDoAtendimento)
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("C�digo do Exame", typeof(int));
-            dt.Columns.Add("Descri��o", typeof(string));
+            dt.Columns.Add("Código do Exame", typeof(int));
+            dt.Columns.Add("Descrição", typeof(string));
             dt.Columns.Add("Data", typeof(DateTime));
             dt.Columns.Add("Valor do Exame", typeof(decimal));
 
@@ -64,13 +66,13 @@ namespace PlanoDeSaude.Model
                 DataRow dr;
                 foreach (var item in ListaExamesDoAtendimento)
                 {
-                    //  dt.Rows.Add(item.ObjExame.Id, item.ObjExame.Descricao, item.ObjExame.Valor, item.ObjAtendimento.ObjPaciente.Nome, item.Status);
-                    dr = dt.NewRow();
-                    dr["Código do Exame"] = item.ObjExame.Id;
-                    dr["Descri��o"] = item.ObjExame.Descricao;
-                    dr["Data"] = item.DataExame;
-                    dr["Valor do Exame"] = item.ObjExame.Valor;
-                    dt.Rows.Add(dr);
+                    dt.Rows.Add(item.ObjExame.Id, item.ObjExame.Descricao, item.DataExame, item.ObjExame.Valor);
+                    //dr = dt.NewRow();
+                    //dr["Código do Exame"] = item.ObjExame.Id;
+                    //dr["Descrição"] = item.ObjExame.Descricao;
+                    //dr["Data"] = item.DataExame;
+                    //dr["Valor do Exame"] = item.ObjExame.Valor;
+                    //dt.Rows.Add(dr);
                 }
             }
             else

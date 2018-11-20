@@ -24,7 +24,7 @@ namespace PlanoDeSaude.Formularios
 
         public void CarregaGridExamesDoAtendimento()
         {
-            gvListaDeExames.DataSource = ObjAtendimento.FormatarItensParaExibir(ObjAtendimento.ListaExamesDoAtendimento);
+            gvListaDeExames.DataSource = ExamesDoAtendimento.FormatarLista(ObjAtendimento.ListaExamesDoAtendimento);
             if (ObjAtendimento.ListaExamesDoAtendimento.Count>0)
             {
                 btnRemover.Visible = true;

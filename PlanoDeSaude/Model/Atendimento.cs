@@ -67,6 +67,7 @@ namespace PlanoDeSaude.Model
             set { listaExamesDoAtendimento = value; }
         }
 
+
         public void Save()
         {
 
@@ -89,8 +90,6 @@ namespace PlanoDeSaude.Model
 
         }
 
-  
-
         public void Remove()
         {
             using (TransactionScope scopo = new TransactionScope())
@@ -106,51 +105,27 @@ namespace PlanoDeSaude.Model
             }
 
         }
+
         public IList<Atendimento> Buscar(DateTime inicio, DateTime fim)
         {
             return new AtendimentoDAO().BuscarEntreDatas(inicio, fim);
         }
+
         public IList<Atendimento> Buscar()
         {
             return new AtendimentoDAO().BuscarTodos();
         }
+
         public Atendimento Buscar(int id)
         {
             return new AtendimentoDAO().BuscarPorID(id);
-        }
-        public DataTable FormatarItensParaExibir(IList<ExamesDoAtendimento> listaExamesDoAtendimento)
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Código do Exame", typeof(int));
-            dt.Columns.Add("Descrição", typeof(string));
-            dt.Columns.Add("Data", typeof(DateTime));
-            dt.Columns.Add("Valor do Exame", typeof(decimal));
-
-            if (listaExamesDoAtendimento != null)
-            {
-                DataRow dr;
-                foreach (var item in listaExamesDoAtendimento)
-                {
-                    //  dt.Rows.Add(item.ObjExame.Id, item.ObjExame.Descricao, item.ObjExame.Valor, item.ObjAtendimento.ObjPaciente.Nome, item.Status);
-                    dr = dt.NewRow();
-                    dr["Código do Exame"] = item.ObjExame.Id;
-                    dr["Descrição"] = item.ObjExame.Descricao;
-                    dr["Data"] = item.DataExame;
-                    dr["Valor do Exame"] = item.ObjExame.Valor;
-                    dt.Rows.Add(dr);
-                }
-            }
-            else
-            {
-                dt = null;
-            }
-            return dt;
         }
 
         public DataTable FormatarParaExibir(IList<Atendimento> listaAtendimento)
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("Código do Atendimento", typeof(int));
+            dt.Columns.Add("Paciente", typeof(string));
             dt.Columns.Add("Data do Atendimento", typeof(DateTime));
             dt.Columns.Add("Valor à Pagar", typeof(decimal));
             dt.Columns.Add("Status", typeof(string));
@@ -160,7 +135,7 @@ namespace PlanoDeSaude.Model
                 DataRow dr;
                 foreach (var item in listaAtendimento)
                 {
-                    dt.Rows.Add(item.Id, item.DataAtendimento, item.ValorAPagar, item.Status);
+                    dt.Rows.Add(item.Id, item.ObjPaciente.Nome, item.DataAtendimento, item.ValorAPagar, item.Status);
                 }
             }
             else
@@ -169,7 +144,6 @@ namespace PlanoDeSaude.Model
             }
             return dt;
         }
-
 
         public void Validar()
         {
