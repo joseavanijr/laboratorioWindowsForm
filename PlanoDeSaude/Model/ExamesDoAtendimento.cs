@@ -51,5 +51,33 @@ namespace PlanoDeSaude.Model
         {
             new ExamesDoAtendimentoDAO().Deletar(this);
         }
+         public static DataTable FormatarLista(IList<ExamesDoAtendimento> ListaExamesDoAtendimento)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("C�digo do Exame", typeof(int));
+            dt.Columns.Add("Descri��o", typeof(string));
+            dt.Columns.Add("Data", typeof(DateTime));
+            dt.Columns.Add("Valor do Exame", typeof(decimal));
+
+            if (ListaExamesDoAtendimento != null)
+            {
+                DataRow dr;
+                foreach (var item in ListaExamesDoAtendimento)
+                {
+                    //  dt.Rows.Add(item.ObjExame.Id, item.ObjExame.Descricao, item.ObjExame.Valor, item.ObjAtendimento.ObjPaciente.Nome, item.Status);
+                    dr = dt.NewRow();
+                    dr["Código do Exame"] = item.ObjExame.Id;
+                    dr["Descri��o"] = item.ObjExame.Descricao;
+                    dr["Data"] = item.DataExame;
+                    dr["Valor do Exame"] = item.ObjExame.Valor;
+                    dt.Rows.Add(dr);
+                }
+            }
+            else
+            {
+                dt = null;
+            }
+            return dt;
+        }
     } //end ExamesDoAtendimento
 }

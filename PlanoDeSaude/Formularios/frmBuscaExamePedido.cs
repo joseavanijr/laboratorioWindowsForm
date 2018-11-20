@@ -27,7 +27,7 @@ namespace PlanoDeSaude.Formularios
         {
             int id = Convert.ToInt32(gvExames.CurrentRow.Cells["Id"].Value);
 
-            Exame exame = new ExameDAO().SelecionaPorID(id);
+            Exame exame = new Exame().Buscar(id);
             frmAtendimento.ObjAtendimento.AddItem(exame, "Exame por Fazer", DateTime.Now);
             frmAtendimento.CarregaGridExamesDoAtendimento();
 
