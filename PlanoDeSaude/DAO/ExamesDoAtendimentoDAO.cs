@@ -68,6 +68,17 @@ namespace PlanoDeSaude.DAO
             return listaExamesDoAtendimentos;
         }
 
+        public void Deletar(Atendimento atendimento)
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = "DELETE FROM ExamesDoAtendimento WHERE atendimentoID=@atendimentoId";
+
+            comando.Parameters.AddWithValue("@atendimentoID", atendimento.Id);
+
+            new Conexao().Crud(comando);
+        }
+
         public IList<ExamesDoAtendimento> BuscarExamesDoAtendimento(Atendimento objAtendimento)
         {
             IList<ExamesDoAtendimento> listaExamesDoAtendimentos = new List<ExamesDoAtendimento>();

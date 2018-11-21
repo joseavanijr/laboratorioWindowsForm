@@ -18,14 +18,35 @@ namespace PlanoDeSaude.Formularios
         {
             objAtendimento = atendimento;
             InitializeComponent();
-            PreencherForm();
+            CarregaPaciente();
+            CarregaGridExamesDoAtendimento();
         }
 
-        private void PreencherForm()
-        {            
-            txtPaciente.Text = objAtendimento.ObjPaciente.Nome;
-            dpDataAtendimento.Value = objAtendimento.DataAtendimento;
-            gvListaDeExames.DataSource = objAtendimento.ListaExamesDoAtendimento;
+        public void CarregaPaciente()
+        {
+            txNometPaciente.Text = objAtendimento.ObjPaciente.Nome;
+            txtDtNascimentoPaciente.Text = objAtendimento.ObjPaciente.DataNascimento.ToString();
+            txtPlanoPaciente.Text = objAtendimento.ObjPaciente.ObjPlanoDeSaude.Nome;
+        }
+
+        public void CarregaGridExamesDoAtendimento()
+        {
+            gvListaDeExames.DataSource = ExamesDoAtendimento.FormatarLista(objAtendimento.ListaExamesDoAtendimento);
+        }
+
+        private void btnApagar_Click(object sender, EventArgs e)
+        {
+            if (
+               MessageBox.Show("Deseja excluir esse atendimento? Caso confirme, todos os exames cadastrados neles também serão excluídos", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+               DialogResult.Yes)
+            {
+                objAtendimento.Remove();
+                if (MessageBox.Show("Excluido com Sucesso!", "", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }
+            
         }
     }
 }

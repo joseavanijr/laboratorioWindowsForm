@@ -67,7 +67,6 @@ namespace PlanoDeSaude.Model
             set { listaExamesDoAtendimento = value; }
         }
 
-
         public void Save()
         {
 
@@ -94,11 +93,11 @@ namespace PlanoDeSaude.Model
         {
             using (TransactionScope scopo = new TransactionScope())
             {
-                foreach (var item in listaExamesDoAtendimento)
-                {
-                    item.Remove();
-                }
-
+                //foreach (var item in listaExamesDoAtendimento)
+                //{
+                //    item.Remove();
+                //}
+                ExamesDoAtendimento.RemoveExamesDoAtendimento(this);
                 new AtendimentoDAO().Apagar(this);
 
                 scopo.Complete();

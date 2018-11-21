@@ -50,7 +50,7 @@ namespace PlanoDeSaude.Formularios
 
         private void gvListaDeExames_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = Convert.ToInt32(gvListaDeExames.CurrentRow.Cells["Id"].Value);
+            int id = Convert.ToInt32(gvListaDeExames.CurrentRow.Cells["Código do Atendimento"].Value);
             Atendimento a = new Atendimento();
             a = a.Buscar(id);
 

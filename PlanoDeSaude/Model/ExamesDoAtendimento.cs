@@ -67,12 +67,6 @@ namespace PlanoDeSaude.Model
                 foreach (var item in ListaExamesDoAtendimento)
                 {
                     dt.Rows.Add(item.ObjExame.Id, item.ObjExame.Descricao, item.DataExame, item.ObjExame.Valor);
-                    //dr = dt.NewRow();
-                    //dr["Código do Exame"] = item.ObjExame.Id;
-                    //dr["Descrição"] = item.ObjExame.Descricao;
-                    //dr["Data"] = item.DataExame;
-                    //dr["Valor do Exame"] = item.ObjExame.Valor;
-                    //dt.Rows.Add(dr);
                 }
             }
             else
@@ -80,6 +74,11 @@ namespace PlanoDeSaude.Model
                 dt = null;
             }
             return dt;
+        }
+
+        public static void RemoveExamesDoAtendimento(Atendimento atendimento)
+        {
+            new ExamesDoAtendimentoDAO().Deletar(atendimento);
         }
     } //end ExamesDoAtendimento
 }
